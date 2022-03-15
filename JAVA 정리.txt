@@ -1,0 +1,410 @@
+절차지향 프로그래밍(Procedural Programming)
+
+ - 코드를 순차적인 처리하여 프로그램이 유기적으로 연결되도록 만드는 프로그래밍 기법
+ - 대표적인 절차지향 언어에는 C언어가 있다. 
+ - 컴퓨터의 작업 처리 방식과 유사하여 객체지향 언어를 사용하는 것에 비해 빠른 처리가 가능
+ - 정해진 실행 순서 때문에 코드의 순서가 바뀌면 동일한 결과를 보장하기 어려워 유지보수가 어렵다.
+
+
+객체지향 프로그래밍(Object Oriented Programming)
+
+ - 실제 세계를 모델링하여 소프트웨어를 개발하는 방법
+ - 기능별로 묶어 모듈화를 함으로써 같은 기능은 중복 배제 
+ - 모듈을 재활용여 유지보수에 유리하고 확장성이 좋다.
+
+
+정수 자료형의 종류와 크기
+
+ - byte  : 1바이트 단위의 자료형 동영상, 음악 파일, 실행 파일의 자료를 처리할 때 사용
+ - short : 2바이트 단위의 자료형 C/C++ 언어와 호환 시 사용
+ - int   : 4바이트 단위의 자료형 자바에서 사용하는 정수에 대한 기본 자료 형
+           프로그램에서 사용하는 모든 숫자(리터럴)은 int 로 저장됨, 32 비트를 초과하는 숫자는 long 자료형으로 처리
+ - long  : 8바이트 자료형 숫자의 뒤에 알파벳 L 또는 l 을 써서 long 형임을 표시 함
+	   예) int num = 12345678900; // 오류 
+	      long lnum = 12345678900; //오류 
+	      long lnumber = 12345678900L; // ok
+
+
+상수(constant)
+
+ - 상수는 변하지 않는 수
+ - 원주률 3.14, 1년 12개월 등
+ - final 예약어를 사용하여 선언
+ - 상수를 사용하면 변하지 않는 값을 반복하여 사용할 때 의미있는 문자로 인식하기 쉽고 변하더라도 선언한 부분만 변경하면 되므로 여러부분을 수정할 필요가 없음
+
+
+리터럴(literal)
+
+ - 프로그램에서 사용하는 숫자, 문자, 논리값을 뜻함
+ - 리터럴은 상수 풀(constant pool)에 있음
+ - 정수 리터럴은 int 로 실수 리터럴은 double 로 저장됨
+ - 정수의 범위가 넘어가는 경우는 L,l을 float로 사용하려는 경우는 F,f 식별자를 써줘야 함
+
+
+형 변환(type conversion)
+
+ - 서로 다른 자료형 간에 연산등의 수행을 위해 하나의 자료형으로 통일하는 것
+ - 묵시적 형 변환(explicit type conversion, 자동 형 변환)과 명시적 형 변환(implicit type conversion, 강제 형 변환)이 있음
+ - 바이트 크기가 작은 자료형에서 큰 자료형으로 형 변환은 자동으로 이루어 짐
+ - 덜 정밀한 자료형에서 더 정밀한 자료형으로읜 형 변환은 자동으로 이루어 짐
+
+
+함수(function)
+
+ - 하나의 기능을 수행하는 일련의 코드
+ - 구현된(정의된) 함수는 호출하여 사용하고 호출된 함수는 기능이 끝나면 제어가 반환됨
+ - 함수로 구현된 하나의 기능은 여러 곳에서 동일한 방식으로 호출되어 사용될 수 있음
+ - 스택 : 함수가 호출될 때 지역 변수들이 사용하는 메모리
+ - 함수는 이름, 매개 변수, 반환 값, 함수 몸체(body)로 구성됨
+
+	int add(int num1, int num2) {
+		
+		int result;
+		result = num1 + num2;
+		return result;
+	}
+
+
+동적 메모리(heap memory)
+
+ - 생성된 인스턴스는 동적 메모리에 할당된다.
+ - C나 C++ 언어에서는 사용한 동적 메모리를 프로그래머가 해제 시켜야 함( free() / delete)
+ - 자바에서는 Gabage Collector 가 주기 적으로 사용하지 않는 메모리를 수거
+ - 하나의 클래스로 부터 여러개의 인스턴스가 생성되고 각각 다른 메모리 주소를 가지게 됨
+
+
+생성자(constructor)
+
+ - 객체를 생성할 때 new 키워드와 함께 사용(new Student();)
+ - 객체가 생성될 때 변수나 상수를 초기화 하거나 다른 초기화 기능을 수행하는 메서드를 호출 함
+ - 생성자는 반환 값이 없고, 클래스의 이름과 동일
+ - 대부분의 생성자는 외부에서 접근 가능하지만, 필요에 의해 private 으로 선언되는 경우도 있음
+
+
+기본 생성자(default constructor)
+
+ - 클래스에는 반드시 적어도 하나 이상의 생성자가 존재
+ - 클래스에 생성자를 구현하지 않아도 new 키워드와 함께 생성자를 호출할 수 있음
+ - 클래스에 생성자가 하나도 없는 경우 컴파일러가 생성자 코드를 넣어 줌(public Student(){})
+
+
+접근 제어 지시자(accesss modifier)
+
+ - 클래스 외부에서 클래스의 멤버 변수, 메서드, 생성자를 사용할 수 있는지 여부를 지정하는 키워드
+ - private : 같은 클래스 내부에서만 접근 가능( 외부 클래스, 상속 관계의 클래스에서도 접근 불가)
+ - default : 같은 패키지 내부에서만 접근 가능 ( 상속 관계라도 패키지가 다르면 접근 불가)
+ - protected : 같은 패키지나 상속관계의 클래스에서 접근 가능하고 그 외 외부에서는 접근 할 수 없음
+ - public : 클래스의 외부 어디서나 접근 할 수 있음
+ - getter() / setter()를 이용하여 private 으로 선언된 멤버 변수 (필드)에 대해 접근, 수정할 수 있는 메서드를 public으로 제공
+
+
+static 변수
+
+ - 공통으로 사용하는 변수가 필요한 경우 / 여러 인스턴스가 공유하는 기준 값이 필요한 경우
+ - ex) 학생마다 새로운 학번 생성 / 카드회사에서 카드를 새로 발급할때마다 새로운 카드 번호를 부여 / 회사에 사원이 입사할때 마다 새로운 사번이 필요한
+ - static int serialNum; 선언 후 Student.serialNum = 100; 값을 할당
+ - 인스턴스가 생성될 때 만들어지는 변수가 아닌, 처음 프로그램이 메모리에 로딩될 때 메모리를 할당
+ - 인스턴스 생성과 상관 없이 사용 가능하므로 클래스 이름으로 직접 참조
+
+
+변수의 유효 범위와 메모리
+
+ - 변수의 유효 범위와 생성과 소멸은 각 변수의 종류마다 다름
+ - 지역변수, 멤버 변수, 클래스 변수는 유효범위와 life cycle, 사용하는 메모리도 다름
+	
+변수 유형			선언 위치			사용 범위					메모리		생성과 소멸
+지역 변수(로컬 변수) 		함수 내부			함수 내부에서만 사용				스택		함수가 호출될 때 생성되고 함수가 끝나면 소멸함
+멤버 변수(인스턴스 변수)	클래스 멤버 변수로 선언	클래스 내부에서 사용하고 private이 아니면 	힙		인스턴스가 생성될 때 힙에 생성되고, 가비지 컬렉터
+						참조 변수로 다른 클래스에서 사용 가능				가 메모리를 수거할 때 소멸됨
+static 변수		static 예약어를 사용하여	클래스 내부에서 사용하고 private이 아니면		데이터 영역		프로그램이 처음 시작할 때 상수와 함꼐 데이터 영역
+			클래스 내부에 선언		클래스 이름으로 다른 클래스에서 사용 가능				에 생성되고 프로그램이 끝나고 메로리를 해제할 때
+													소멸됨
+
+
+싱글톤 패턴(singleton pattern)
+
+ - 프로그램에서 인스턴스가 단 한 개만 생성되어야 하는 경우 사용하는 디자인 패턴
+ - static 변수, 메서드를 활용하여 구현 할 수 있음
+ - 싱글톤 패턴으로 회사 객체 구현하기(생성자는 private으로 선언)
+ - private Company() {} -> 클래스 내부에 유일한 private 인스턴스 생성
+ - private static Company instance = new Company(); -> 외부에서 유일한 인스턴스를 참조할 수 있는 public 메서드 제공
+
+	public static Company getInstance() {
+		
+		if( instance == null) {
+			instance = new Company();
+		}
+		return instance;
+	}
+
+
+CompanyTest.java
+
+public class CompanyTest {
+
+	public static void main(String[] args) {
+		Company company1 = Company.getInstance();
+		
+		Company company2 = Company.getInstance();
+		
+		System.out.println(company1);
+		System.out.println(company2);
+		
+		//Calendar calendar = Calendar.getInstance();
+	}
+}
+
+
+배열(Array)
+
+ - 동일한 자료형의 순차적 자료 구조
+ - 인덱스 연산자[]를 이용하여 빠른 참조가 가능
+ - 물리적 위치와 논리적 위치가 동일
+ - 배열의 순서는 0부터 시작
+ - 자바에서는 객체 배열을 구현한 ArrayList를 많이 활용함
+
+
+배열의 선언
+
+ - int[] arr1 = new int[10];
+ - int arr2[] = new int[10];
+
+
+배열의 초기화
+
+ - 배열은 선언과 동시에 자료형에 따라 초기화 됨 ( 정수는 0, 실수는 0.0, 객체는 null)
+ - 필요에 따라 초기값을 지정할 수 있음
+	
+	int[] numbers = new int[] {10, 20, 30};  //개수 생략해야 함
+	int[] numbers = {10, 20, 30};            // new int[]  생략 가능 
+	int[] ids; 
+	ids = new int[] {10, 20, 30};            // 선언후 배열을 생성하는 경우는 new int[] 생략할 수 없음
+
+
+배열의 사용
+
+ - 배열을 이용하여 합을 구하기
+
+	int[] arr = new int[10];
+	int total = 0;
+		
+		
+	for(int i=0, num=1; i< arr.length; i++, num++) {
+		arr[i] = num;
+	}
+		
+	for( int i =0; i<arr.length; i++) {
+		total += arr[i];	
+	}
+	System.out.println(total);
+
+
+length를 활용하여 오류가 나는 경우
+
+
+캡슐화(Encapsulation)
+
+ - 꼭 필요한 정보와 기능만 외부에 오픈함
+ - 대부분의 멤버 변수와 메서드를 감추고 외부에 통합된 인터페이스만은 제공하여 일관된 기능을 구현 하게 함
+ - 각각의 메서드나 멤버 변수를 접근함으로써 발생하는 오류를 최소화 한다.
+
+
+상속(Inheritance)
+
+ - 이미 작성된 클래스를 이어 받아서 새로운 클래스를 생성하는 기법
+ - 기존 코드를 재활용을 통한 재사용성 증가 및 중복 방지
+ - 상위 클래스는 하위 클래스 보다 더 일반적인 개념과 기능을 가짐
+ - 하위 클래스는 상위 클래스 보다 더 구체적인 개념과 기능을 가짐
+ - 하위 클래스가 상위 클래스의 속성과 기능을 확장 (extends)한다는 의미
+ - class B extends A{}
+
+
+하위 클래스가 생성 되는 과정
+
+ - 하위 클래스를 생성하면 상위 클래스가 먼저 생성 됨
+ - new VIPCustomer()를 호출하면 Customer()가 먼저 호출 됨
+ - 클래스가 상속 받은 경우 하위 클래스의 생성자에서는 반드시 상위 클래스의 생성자를 호출 함
+
+	Customer.java
+
+	public Customer() {
+			customerGrade = "SILVER";
+			bonusRatio = 0.01;
+		
+			System.out.println("Customer() 생성자 호출");
+	}
+
+
+	VIPCustomer.java
+
+	public VIPCustomer() {
+			customerGrade = "VIP";
+			bonusRatio = 0.05;
+			salesRatio = 0.1;
+		
+			System.out.println("VIPCustomer() 생성자 호출");
+	}
+
+
+super 키워드
+
+ - 하위 클래스에서 가지는 상위 클래스에 대한 참조 값
+ - super()는 상위 클래스의 기본 생성자를 호출 함
+ - 하위 클래스에서 명시적으로 상위 클래스의 생성자를 호출하지 않으면 super()가 호출 됨(이때 반드시 상위 클래스의 기본 생성자가 존재 해야 함)
+ - 상위 클래스의 기본 생성자가 없는 경우 ( 다른 생성자가 있는 경우 ) 하위 클래스에서는 생성자에서는 super를 이용하여 명시적으로 상위 클래스의 생성자를 호출 함
+ - super는 생성된 상위 클래스 인스턴스의 참조 값을 가지므로 super를 이용하여 상위 클래스의 메서드나 멤버 변수에 접근할 수 있음
+
+
+형 변환(업캐스팅)
+
+ - 상위 클래스로 변수를 선언하고 하위 클래스의 생성자로 인스턴스를 생성 
+	
+	Customer customerLee = new VIPCustomer();
+
+ - 상위 클래스 타입의 변수에 하위 클래스 변수가 대입;
+
+	VIPCustomer vCustomer = new VIPCustomer();
+	addCustomer(vCustomer);
+	int addCustomer(Customer customer){
+	}
+
+ - 하위 클래스는 상위 클래스의 타입을 내포하고 있으므로 상위 클래스로의 묵시적 형 변환이 가능함
+ - 상속 관계에서 모든 하위 클래스는 상위 클래스로 형 변환(업캐스팅)이 됨 
+ - VIPCustomer() 생성자에 의해 VIPCustomer 클래스의 모든 멤버 변수에 대한 메모리는 생성되었지만, 
+   변수의 타입이 Customer 이므로 실제 접근 가능한 변수나 메서드는 Customer의 변수와 메서드임
+
+
+오버라이딩(overriding)
+ 
+ - 상위 클래스에 정의된 메서드의 구현 내용이 하위 클래스에서 구현할 내용과 맞지 않는 경우 하위 클래스에서 동일한 이름의 메서드를 재정의 할 수 있음
+ - VIPCustomer 클래스의 calcPrice()는 할인율이 적용되지 않음
+
+	VIPCustomer.java
+
+	@Override
+	public int calcPrice(int price) {
+		bonusPoint += price * bonusRatio;
+		return price - (int)(price * salesRatio);
+	}
+
+
+다형성(Polymorphism)
+
+ - 하나의 변수명, 함수명 등이 상황에 따라 다른 의미로 해석되는 것
+ - 부모클래스와 같은 메서드명, 매개변수를 가진 메서드를 재정의 하는 것(오버라이딩)
+ - 같은 이름의 함수를 여러개 정의하고, 매개변수의 타입과 개수를 다르게 하여 다르게 호출 하는 것(오버로딩)
+ - 상위 클래스에서는 공통적인 부분을 제공하고 하위 클래스에서는 각 클래스에 맞는 기능 구현
+ - 여러 클래스를 하나의 타입(상위 클래스)으로 핸들링 할 수 있음
+
+
+
+추상 클래스(abstract class)
+
+ - 구현 코드 없이 메서드의 선언만 있는 추상 메서드(abstract method)를 포함한 클래스
+ - 메서드 선언(declaration) : 반환타입, 메서드 이름, 매개변수로 구성
+ - 메서드 정의(definition) : 메서드 구현(implementation)과 동일한 의미 구현부(body) 를 가짐 ({ })
+	예) int add(int x, int y); // 선언 
+   	int add(int x, int y){ } // 구현부가 있음, 추상 메서드 아님
+ - abstract 예약어를 사용
+ - 추상 클래스는 new 할 수 없음 ( 인스턴스화 할 수 없음 )
+ - 메서드에 구현 코드가 없으면 abstract 로 선언
+ - abstract로 선언된 메서드를 가진 클래스는 abstract로 선언
+ - 모든 메서드가 구현 된 클래스라도 abstract로 선언되면 추상 클래스로 인스턴스화 할 수 없음
+ - 추상 클래스의 추상 메서드는 하위 클래스가 상속 하여 구현
+ - 추상 클래스 내의 추상 메서드 : 하위 클래스가 구현해야 하는 메서드
+ - 추상 클래스 내의 구현 된 메서드 : 하위 클래스가 공통으로 사용하는 메서드 ( 필요에 따라 하위 클래스에서 재정의 함 )
+
+
+인터페이스(Interface)
+
+ - 클래스나 프로그램이 제공하는 기능을 명시적으로 선언
+ - 일종의 클라이언트 코드와의 약속이며 클래스나 프로그램이 제공하는 명세(specification)
+ - 클라이언트 프로그램은 인터페이스에 선언된 메서드 명세만 보고 이를 구현한 클래스를 사용할 수 있음
+ - 어떤 객체가 하나의 인터페이스 타입이라는 것은 그 인터페이스가 제공하는 모든 메서드를 구현했다는 의미임
+ - 인터페이스를 구현한 다양한 객체를 사용함 - 다형성
+
+	Sell.java
+
+	public interface Sell {
+		void sell();
+	}
+
+	Buy.java
+
+	public interface Buy {
+		void buy();
+	}
+
+	Customer.java
+	public class Customer implements Buy, Sell{
+
+		@Override
+		public void sell() {
+			System.out.println("customer sell");
+		}
+
+		@Override
+		public void buy() {
+			System.out.println("customer buy");		
+		}
+
+		public void sayHello() {
+			System.out.println("Hello");
+		}
+	}
+
+
+java.lang 패키지
+
+ -프로그래밍시 import 하지 않아도 자동으로 imort됨
+ - import.java.lang.*;
+ - 많이 사용하는 기본 클래스들이 속한 패키지 ex) String, Integer, System...
+
+
+java.lang.Object 클래스
+
+ - 모든 클래스의 최상위 클래스는
+ - 모든 클래스는 Object에서 상속받고, Object 클래스의 메서드 중 일부는 재정의해서 사용할 수 있음
+ - 컴파일러가 extends Object를 추가함
+ - class Student => class Student extends Object
+
+
+toString() 메서드
+
+ - 객체의 정보를 String으로 바꾸어서 사용할 때 쓰임
+ - String이나 Integer 클래스는 이미 재정의 되어 있음
+	
+	public String toString() {
+		return title + "," + author;
+	}
+
+
+equals() 메서드
+
+ - 두 인스턴스의 주소 값을 비교하여 true/false를 반환
+ - 재정의 하여 두 인스턴스가 논리적으로 동일함의 여부를 구현함
+ - 인스턴스가 다르더라도 논리적으로 동일한 경우 true를 반환하도록 재정의 할 수 있음 (같은 학번, 같은 사번, 같은 아이디의 회원...)
+
+
+hashCode() 메서드
+
+ - hashCode()는 인스턴스의 저장 주소를 반환함
+ - 힙메모리에 인스턴스가 저장되는 방식이 hash 방식
+ - hash : 정보를 저장, 검색하는 자료구조
+ - 자료의 특정 값(키 값)에 대한 저장 위치를 반환해주는 해시 함수를 사용
+ - 두 인스턴스가 같다는 것은 equals()의 반환 값이 true이고 동일한 hashCode() 값을 반환
+ - 논리적으로 동일함을 위해 equals() 메서드를 재정의 하였다면 hashCode()메서드도 재정의 하여 동일한 hashCode 값이 반환되도록 한다
+
+
+clone() 메서드
+
+ - 객체의 원본을 복제하는데 사용하는 메서드
+ - 생성과정의 복잡한 과정을 반복하지 않고 복제 할 수 있음
+ - clone()메서드를 사용하면 객체의 정보(멤버 변수 값등...)가 동일한 또 다른 인스턴스가 생성되는 것이므로, 객체 지향 프로그램에서의 정보 은닉, 객체 보호의 관점에서 위배될 수 있음
+ - 해당 클래스의 clone() 메서드의 사용을 허용한다는 의미로 cloneable 인터페이스를 명시해 줌
+
+ 	Student Lee2 = (Student)Lee.clone();
+		System.out.println(System.identityHashCode(Lee));
+		System.out.println(System.identityHashCode(Lee2));
+
+
